@@ -10,7 +10,7 @@ Install:
 npm install typeorm-relay-connection
 ```
 
-Typical usage in an Apollo Server:
+### GraphQL Resolver
 
 ```js
 const QueryResolver = {
@@ -26,7 +26,7 @@ const QueryResolver = {
         // default: 500
         limit: 100,
 
-        // primary key for Book
+        // primary (unique!) key for Book
         // default: 'id'
         cursorKey: "id",
 
@@ -40,7 +40,7 @@ const QueryResolver = {
 };
 ```
 
-## Connection Aggregates
+### Connection Aggregates
 
 You can access the scope from connection resolvers to calculate aggregates on whatever query was previously built for pagination:
 
