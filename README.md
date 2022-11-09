@@ -1,5 +1,7 @@
 ## TypeORM Relay Connection
 
+TypeORM implementation of Relay Connection spec.
+
 ## Getting Started
 
 Install:
