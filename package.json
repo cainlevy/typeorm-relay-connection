@@ -1,0 +1,47 @@
+{
+  "name": "node-module-template",
+  "version": "0.0.0",
+  "description": "Template for node modules with TypeScript, ESLint, and Prettier",
+  "license": "GPL-3.0",
+  "author": "Lance Ivy <lance@cainlevy.net>",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "build": "npx -p typescript tsc -p tsconfig.build.json",
+    "typecheck": "npx -p typescript tsc --noEmit",
+    "lint": "npx eslint src/ --ext .ts,.tsx",
+    "test": "npx jest",
+    "prepare": "husky install",
+    "prepublishOnly": "npm run lint --quiet && npm run test && npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@types/jest": "^27.0.3",
+    "@types/react": "^17.0.35",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "jest-date-mock": "^1.0.8",
+    "lint-staged": "^12.0.2",
+    "prettier": "^2.4.1",
+    "prettier-plugin-organize-imports": "^2.3.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.1",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.4.4"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}

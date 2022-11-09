@@ -1,0 +1,28 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "noEmit": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+
+    // Browser
+    // "lib": ["dom", "dom.iterable", "esnext"],
+    // "target": "es5",
+    // "jsx": "react-jsx",
+
+    // NodeJS
+    // "lib": ["es2021"],
+    // "target": "es2021",
+
+    // strictness
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // interoperability
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true
+  }
+}
