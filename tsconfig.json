@@ -6,14 +6,9 @@
     "moduleResolution": "node",
     "module": "commonjs",
 
-    // Browser
-    // "lib": ["dom", "dom.iterable", "esnext"],
-    // "target": "es5",
-    // "jsx": "react-jsx",
-
-    // NodeJS
-    // "lib": ["es2021"],
-    // "target": "es2021",
+    // Runtime
+    "lib": ["es2021"],
+    "target": "es2021",
 
     // strictness
     "strict": true,
