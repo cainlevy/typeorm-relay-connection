@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["src/**.test.ts", "src/**.test.tsx"],
+  "exclude": ["src/**.test.ts", "src/**.test.tsx", "src/databaseTesting.ts"],
   "compilerOptions": {
     "outDir": "lib",
     "sourceMap": false,

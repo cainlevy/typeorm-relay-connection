@@ -17,7 +17,7 @@ export interface Edge<T> {
   node: T;
 }
 
-export type Entity = { id: string };
+export type Entity = { id: string | number };
 
 export class LimitError extends Error {
   constructor(arg: "first" | "last") {
@@ -34,8 +34,8 @@ export default class RelayConnection<T extends Entity> {
   get pageInfo(): PageInfo {
     const slice = this.getSlice();
     return {
-      startCursor: slice[0]?.id || "",
-      endCursor: slice[slice.length - 1]?.id || "",
+      startCursor: slice[0]?.id.toString() || "",
+      endCursor: slice[slice.length - 1]?.id.toString() || "",
       hasNextPage:
         !!slice.length &&
         slice[slice.length - 1].id !== this.nodes[this.nodes.length - 1].id,
@@ -44,15 +44,22 @@ export default class RelayConnection<T extends Entity> {
   }
 
   get edges(): Edge<T>[] {
-    return this.getSlice().map((node) => ({ cursor: node.id, node }));
+    return this.getSlice().map((node) => ({
+      cursor: node.id.toString(),
+      node,
+    }));
   }
 
   private getSlice(): T[] {
     let slice = this.nodes;
 
-    const afterIndex = slice.findIndex((n) => n.id === this.args.after);
+    const afterIndex = slice.findIndex(
+      (n) => n.id.toString() === this.args.after
+    );
     slice = afterIndex !== -1 ? slice.slice(afterIndex + 1) : slice;
-    const beforeIndex = slice.findIndex((n) => n.id === this.args.before);
+    const beforeIndex = slice.findIndex(
+      (n) => n.id.toString() === this.args.before
+    );
     slice = beforeIndex !== -1 ? slice.slice(0, beforeIndex) : slice;
 
     if (this.args.first) {

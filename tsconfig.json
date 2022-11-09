@@ -9,9 +9,12 @@
     // Runtime
     "lib": ["es2021"],
     "target": "es2021",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
 
     // strictness
     "strict": true,
+    "strictPropertyInitialization": false,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
 
