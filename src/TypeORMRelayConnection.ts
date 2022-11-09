@@ -81,12 +81,16 @@ export default class TypeORMRelayConnection<T extends Entity> {
   private nodes(): Promise<T[]> {
     this._nodes ||= new Promise<T[]>((resolve, reject) => {
       const nodesScope = this.scope.clone();
+      // This undefined is eliminated by a constructor guard
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const mainAlias = nodesScope.expressionMap.mainAlias!;
-      const alias = nodesScope.escape(mainAlias.name);
+      // This undefined is eliminated by a constructor guard
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const table = mainAlias
         .tablePath!.split(".")
         .map((i) => nodesScope.escape(i))
         .join(".");
+      const alias = nodesScope.escape(mainAlias.name);
       const cursorKey = nodesScope.escape(this.config.cursorKey);
       const sortingKey = nodesScope.escape(this.config.sortingKey);
       const sortingOrder = this.config.sortingOrder;
