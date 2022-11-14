@@ -98,14 +98,14 @@ export default class TypeORMRelayConnection<T extends Entity> {
       if (this.args.after) {
         const subselect = `(SELECT ${sortingKey} FROM ${table} WHERE ${cursorKey} = :after)`;
         nodesScope.andWhere(
-          `(${alias}.${sortingKey} > ${subselect} OR (${alias}.${sortingKey} = ${subselect} AND ${cursorKey} >= :after))`,
+          `(${alias}.${sortingKey} > ${subselect} OR (${alias}.${sortingKey} = ${subselect} AND ${alias}.${cursorKey} >= :after))`,
           { after: this.args.after }
         );
       }
       if (this.args.before) {
         const subselect = `(SELECT ${sortingKey} FROM ${table} WHERE ${cursorKey} = :before)`;
         nodesScope.andWhere(
-          `(${alias}.${sortingKey} < ${subselect} OR (${alias}.${sortingKey} = ${subselect} AND ${cursorKey} <= :before))`,
+          `(${alias}.${sortingKey} < ${subselect} OR (${alias}.${sortingKey} = ${subselect} AND ${alias}.${cursorKey} <= :before))`,
           { before: this.args.before }
         );
       }
