@@ -26,7 +26,9 @@ describe("TypeORMRelayConnection", () => {
   beforeEach(async () => {
     qb = db
       .createQueryBuilder(Author, "myAlias")
-      .where("LENGTH(myAlias.name) = 1");
+      .where("LENGTH(myAlias.name) = 1")
+      // joins require distinct column references
+      .leftJoin("myAlias.books", "book");
   });
 
   test("default config", async () => {
@@ -193,7 +195,6 @@ describe("TypeORMRelayConnection", () => {
     }
 
     // joining creates extra entries
-    qb.leftJoin("myAlias.books", "book");
     const slice = new TypeORMRelayConnection(qb, {
       first: 1,
     });
