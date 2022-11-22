@@ -1,6 +1,6 @@
 {
   "name": "typeorm-relay-connection",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "TypeORM implementation of Relay Connection spec",
   "license": "GPL-3.0",
   "author": "Lance Ivy <lance@cainlevy.net>",
