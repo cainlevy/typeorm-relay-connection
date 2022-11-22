@@ -1,8 +1,8 @@
 export type Args = {
-  first?: number;
-  last?: number;
-  after?: string;
-  before?: string;
+  first?: number | null;
+  last?: number | null;
+  after?: string | null;
+  before?: string | null;
 };
 
 export interface PageInfo {
