@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2024-07-26
+
+- Return the correct final set when given `before` and `last`
+
 ## [1.0.2] - 2022-11-22
 
 ### Changed
