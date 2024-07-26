@@ -66,6 +66,13 @@ describe("RelayConnection", () => {
     expect(slice.pageInfo.hasNextPage).toBeTruthy();
   });
 
+  test("before & last with partial set", () => {
+    const slice = new RelayConnection(collection, { before: "1", last: 3 });
+    expect(slice.edges.map(({ cursor }) => cursor)).toEqual(["a", "b"]);
+    expect(slice.pageInfo.hasPreviousPage).toBeFalsy();
+    expect(slice.pageInfo.hasNextPage).toBeTruthy();
+  });
+
   test("after & before", () => {
     const slice = new RelayConnection(collection, { after: "4", first: 3 });
     expect(slice.edges.map(({ cursor }) => cursor)).toEqual(["c", "2", "f"]);
