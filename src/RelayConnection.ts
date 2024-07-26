@@ -71,7 +71,7 @@ export default class RelayConnection<T extends Entity> {
       if (this.args.last < 0) {
         throw new LimitError("last");
       }
-      return slice.slice(slice.length - this.args.last);
+      return this.args.last < slice.length ? slice.slice(-this.args.last) : slice;
     }
     return slice;
   }
