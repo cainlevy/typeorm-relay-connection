@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] - 2025-01-02
+
+- Fix comparison operators for DESC sort order
+
 ## [1.0.3] - 2024-07-26
 
 - Return the correct final set when given `before` and `last`

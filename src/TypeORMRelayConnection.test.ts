@@ -221,4 +221,44 @@ describe("TypeORMRelayConnection", () => {
     expect((await slice.pageInfo()).hasPreviousPage).toBeTruthy();
     expect((await slice.pageInfo()).hasNextPage).toBeTruthy();
   });
+
+  test("after when sortingKey is not id and sortingOrder is DESC", async () => {
+    const slice = new TypeORMRelayConnection(
+      qb,
+      {
+        after: "5",
+        first: 4,
+      },
+      {
+        sortingOrder: "DESC",
+        sortingKey: "created_at",
+      }
+    );
+    expect((await slice.edges()).map(({ node }) => node.name)).toEqual([
+      "4",
+      "d",
+      "1",
+      "b",
+    ]);
+  });
+
+  test("after when sortingKey is not id and sortingOrder is ASC", async () => {
+    const slice = new TypeORMRelayConnection(
+      qb,
+      {
+        after: "5",
+        first: 4,
+      },
+      {
+        sortingOrder: "ASC",
+        sortingKey: "created_at",
+      }
+    );
+    expect((await slice.edges()).map(({ node }) => node.name)).toEqual([
+      "2",
+      "f",
+      "7",
+      "e",
+    ]);
+  });
 });
